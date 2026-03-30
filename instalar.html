@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cómo instalar Vento en tu Mac</title>
+  <link rel="icon" type="image/png" href="icon-vento.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: #080808;
+      color: #f0f0f0;
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+
+    :root {
+      --lime: #D4FF33;
+      --lime-dim: rgba(212,255,51,0.1);
+      --lime-glow: rgba(212,255,51,0.3);
+      --border: rgba(255,255,255,0.07);
+      --surface: #141414;
+      --muted: rgba(240,240,240,0.45);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(8,8,8,0.92); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+    }
+    .nav-inner {
+      max-width: 780px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { height: 36px; mix-blend-mode: screen; }
+    .nav-back {
+      font-size: 0.85rem; color: var(--muted);
+      display: flex; align-items: center; gap: 6px;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: #fff; text-decoration: none; }
+
+    /* ── HERO ── */
+    .page-hero {
+      max-width: 780px; margin: 0 auto; padding: 72px 24px 40px;
+      text-align: center;
+    }
+    .page-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--lime);
+      background: var(--lime-dim); border: 1px solid var(--lime-glow);
+      padding: 6px 14px; border-radius: 100px; margin-bottom: 28px;
+    }
+    .page-title {
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 700; line-height: 1.15; letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .page-subtitle {
+      font-size: 1rem; color: var(--muted); max-width: 520px; margin: 0 auto 48px;
+    }
+    .tiempo-estimado {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.8rem; color: var(--muted);
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 8px 18px; border-radius: 100px;
+    }
+    .tiempo-estimado span { color: var(--lime); font-weight: 600; }
+
+    /* ── STEPS ── */
+    .steps-container {
+      max-width: 780px; margin: 60px auto 0; padding: 0 24px 100px;
+    }
+
+    .step-block {
+      display: flex; gap: 28px; margin-bottom: 16px;
+      position: relative;
+    }
+    .step-block:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 23px; top: 52px;
+      width: 2px; bottom: -16px;
+      background: linear-gradient(180deg, rgba(212,255,51,0.25) 0%, transparent 100%);
+    }
+
+    .step-num-wrap {
+      flex-shrink: 0;
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--lime-dim);
+      border: 2px solid var(--lime-glow);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; font-weight: 800; color: var(--lime);
+      box-shadow: 0 0 20px rgba(212,255,51,0.1);
+      position: relative; z-index: 1;
+    }
+
+    .step-content {
+      flex: 1; padding-top: 10px; padding-bottom: 32px;
+    }
+    .step-title-text {
+      font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: #fff;
+    }
+    .step-desc-text {
+      font-size: 0.9rem; color: var(--muted); line-height: 1.75; margin-bottom: 16px;
+    }
+    .step-desc-text strong { color: rgba(240,240,240,0.85); }
+
+    /* Ilustración visual de cada paso */
+    .step-visual {
+      background: #0e0e0e;
+      border: 1px solid var(--border);
+      border-radius: 14px; overflow: hidden;
+      margin-top: 4px;
+    }
+    .step-visual-bar {
+      background: #1a1a1a; border-bottom: 1px solid var(--border);
+      padding: 10px 14px; display: flex; align-items: center; gap: 7px;
+    }
+    .sv-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .sv-red { background: #FF5F57; } .sv-yellow { background: #FEBC2E; } .sv-green { background: #28C840; }
+    .sv-title { font-size: 0.7rem; color: var(--muted); margin-left: 4px; }
+    .step-visual-body { padding: 20px 24px; }
+
+    /* Alerta de macOS simulada */
+    .macos-alert {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 12px; padding: 20px 24px;
+      display: flex; align-items: flex-start; gap: 16px; max-width: 480px;
+    }
+    .alert-icon { font-size: 2.2rem; flex-shrink: 0; }
+    .alert-title { font-size: 0.9rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .alert-text { font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+    .alert-btns { display: flex; gap: 8px; margin-top: 14px; }
+    .alert-btn {
+      font-size: 0.78rem; font-weight: 600; padding: 6px 16px; border-radius: 7px;
+      cursor: default;
+    }
+    .alert-btn-cancel { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.1); }
+    .alert-btn-ok { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.15); }
+
+    /* Path visual de Ajustes */
+    .settings-path {
+      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .settings-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 7px 14px; border-radius: 8px;
+      font-size: 0.82rem; font-weight: 500; color: rgba(255,255,255,0.75);
+    }
+    .settings-arrow { color: var(--muted); font-size: 0.75rem; }
+
+    /* Tip de atajo */
+    .atajo-demo {
+      display: inline-flex; align-items: center; gap: 6px; margin-top: 12px;
+    }
+    .key-cap {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 36px; height: 36px; padding: 0 10px;
+      background: #1e1e1e;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-bottom: 3px solid rgba(0,0,0,0.6);
+      border-radius: 7px; font-size: 0.85rem; font-weight: 600; color: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    }
+    .key-plus { color: var(--muted); font-size: 0.8rem; font-weight: 400; }
+
+    /* Tip pill */
+    .tip-box {
+      display: flex; align-items: flex-start; gap: 12px;
+      background: rgba(212,255,51,0.05); border: 1px solid rgba(212,255,51,0.15);
+      border-radius: 10px; padding: 14px 18px; margin-top: 14px;
+    }
+    .tip-box-icon { font-size: 1rem; flex-shrink: 0; padding-top: 1px; }
+    .tip-box-text { font-size: 0.82rem; color: rgba(240,240,240,0.65); line-height: 1.65; }
+    .tip-box-text strong { color: var(--lime); }
+
+    /* Toggle switch visual */
+    .toggle-row {
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+      border-radius: 10px; padding: 14px 18px; max-width: 440px;
+    }
+    .toggle-label { font-size: 0.88rem; color: rgba(255,255,255,0.8); }
+    .toggle-switch {
+      width: 44px; height: 26px; border-radius: 13px;
+      background: #D4FF33; position: relative;
+      box-shadow: 0 0 12px rgba(212,255,51,0.3);
+    }
+    .toggle-knob {
+      position: absolute; top: 3px; right: 3px;
+      width: 20px; height: 20px; border-radius: 50%;
+      background: #000;
+    }
+
+    /* CTA final */
+    .cta-final {
+      max-width: 780px; margin: 0 auto; padding: 0 24px 80px;
+      text-align: center;
+    }
+    .cta-card {
+      background: linear-gradient(135deg, #0e150e 0%, #060c07 100%);
+      border: 1px solid rgba(212,255,51,0.15);
+      border-radius: 20px; padding: 48px 40px;
+      box-shadow: 0 0 40px rgba(212,255,51,0.04);
+    }
+    .cta-card h2 { font-size: 1.6rem; font-weight: 700; margin-bottom: 10px; }
+    .cta-card p { font-size: 0.9rem; color: var(--muted); margin-bottom: 28px; }
+    .btn-download {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 15px 32px; border-radius: 100px;
+      background: var(--lime); color: #000; font-weight: 700; font-size: 0.95rem;
+      box-shadow: 0 8px 32px rgba(212,255,51,0.25);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+    .btn-download:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(212,255,51,0.35); }
+
+    /* Progress tracker */
+    .progress-tracker {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0; max-width: 420px; margin: 0 auto 60px; padding: 0 24px;
+    }
+    .pt-step {
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      flex: 1;
+    }
+    .pt-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: rgba(255,255,255,0.1); border: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+    .pt-dot.done { background: var(--lime); border-color: var(--lime); box-shadow: 0 0 8px rgba(212,255,51,0.4); }
+    .pt-label { font-size: 0.62rem; color: var(--muted); text-align: center; line-height: 1.3; }
+    .pt-line { height: 1px; flex: 1; background: var(--border); margin-top: -18px; }
+
+    @media (max-width: 600px) {
+      .step-block { gap: 16px; }
+      .step-block:not(:last-child)::after { left: 15px; }
+      .step-num-wrap { width: 32px; height: 32px; font-size: 0.8rem; }
+      .macos-alert { flex-direction: column; gap: 10px; }
+      .settings-path { gap: 5px; }
+      .settings-chip { font-size: 0.75rem; padding: 6px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <img src="logo-vento.png" alt="Vento" class="nav-logo" />
+    <a href="index.html" class="nav-back">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Volver a la web
+    </a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-badge">⏱ 3 minutos · Solo la primera vez</div>
+  <h1 class="page-title">Cómo instalar Vento<br/>en tu Mac</h1>
+  <p class="page-subtitle">macOS pide algunos permisos la primera vez. Sigue estos 4 pasos y en 3 minutos estarás dictando en cualquier app.</p>
+  <div class="tiempo-estimado">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" d="M12 6v6l4 2"/></svg>
+    Tiempo estimado: <span>~3 minutos</span>
+  </div>
+</div>
+
+<div class="steps-container">
+
+  <!-- ─── PASO 1 ─── -->
+  <div class="step-block">
+    <div class="step-num-wrap">1</div>
+    <div class="step-content">
+      <div class="step-title-text">Descarga e instala Vento</div>
+      <p class="step-desc-text">
+        Haz clic en el botón de descarga y abre el archivo <strong>Vento.dmg</strong> que aparece en tu carpeta de Descargas. Arrastra el icono de Vento a la carpeta <strong>Aplicaciones</strong>.
+      </p>
+      <div class="step-visual">
+        <div class="step-visual-bar">
+          <span class="sv-dot sv-red"></span><span class="sv-dot sv-yellow"></span><span class="sv-dot sv-green"></span>
+          <span class="sv-title">Instalar Vento</span>
+        </div>
+        <div class="step-visual-body">
+          <div style="display:flex; align-items:center; justify-content:center; gap:32px; padding: 12px 0;">
+            <div style="text-align:center;">
+              <div style="width:64px;height:64px;background:linear-gradient(135deg,#1a2a1a,#0a0f0a);border:1px solid rgba(212,255,51,0.2);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-size:28px;">
+                <img src="logo-vento.png" style="height:44px;mix-blend-mode:screen;" alt="Vento"/>
+              </div>
+              <div style="font-size:0.72rem;color:var(--muted);">Vento.app</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(212,255,51,0.6)" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <span style="font-size:0.62rem;color:var(--muted);">arrastra</span>
+            </div>
+            <div style="text-align:center;">
+              <div style="width:64px;height:64px;background:#1a1a1a;border:1px solid var(--border);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-size:28px;">📁</div>
+              <div style="font-size:0.72rem;color:var(--muted);">Aplicaciones</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── PASO 2 ─── -->
+  <div class="step-block">
+    <div class="step-num-wrap">2</div>
+    <div class="step-content">
+      <div class="step-title-text">macOS te avisará — es normal, pulsa "Abrir igualmente"</div>
+      <p class="step-desc-text">
+        La primera vez que abras Vento, macOS muestra una advertencia porque la app no viene de la App Store. <strong>Esto es normal</strong> en apps de desarrolladores independientes. Sigue estos pasos:
+      </p>
+      <div class="step-visual">
+        <div class="step-visual-body" style="padding:24px;">
+          <div class="macos-alert">
+            <div class="alert-icon">🚫</div>
+            <div>
+              <div class="alert-title">"Vento" no se puede abrir porque es de un desarrollador no identificado.</div>
+              <div class="alert-text">macOS no puede verificar que esta app no contiene software malicioso.</div>
+              <div class="alert-btns">
+                <div class="alert-btn alert-btn-cancel">Cancelar</div>
+                <div class="alert-btn alert-btn-ok">Listo</div>
+              </div>
+            </div>
+          </div>
+          <div class="tip-box" style="margin-top:20px; max-width:480px;">
+            <div class="tip-box-icon">💡</div>
+            <div class="tip-box-text">
+              Cuando aparezca este mensaje, ve a <strong>Ajustes del sistema → Privacidad y Seguridad</strong>. Baja hasta ver <strong>"Vento fue bloqueada..."</strong> y pulsa <strong>"Abrir igualmente"</strong>. Solo tendrás que hacerlo una vez.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:14px;">
+        <div style="font-size:0.78rem;color:var(--muted);margin-bottom:10px;">Ruta en Ajustes:</div>
+        <div class="settings-path">
+          <div class="settings-chip">⚙️ Ajustes del sistema</div>
+          <span class="settings-arrow">›</span>
+          <div class="settings-chip">🔒 Privacidad y Seguridad</div>
+          <span class="settings-arrow">›</span>
+          <div class="settings-chip" style="color:var(--lime);border-color:rgba(212,255,51,0.2);">"Abrir igualmente"</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── PASO 3 ─── -->
+  <div class="step-block">
+    <div class="step-num-wrap">3</div>
+    <div class="step-content">
+      <div class="step-title-text">Activa el permiso de Accesibilidad</div>
+      <p class="step-desc-text">
+        Vento necesita este permiso para escribir texto en cualquier app (Gmail, Notion, Slack...). La propia app te guiará al abrirla por primera vez. Solo tienes que activar el interruptor.
+      </p>
+      <div class="step-visual">
+        <div class="step-visual-body" style="padding:20px 24px;">
+          <div class="settings-path" style="margin-bottom:16px;">
+            <div class="settings-chip">⚙️ Ajustes del sistema</div>
+            <span class="settings-arrow">›</span>
+            <div class="settings-chip">🔒 Privacidad y Seguridad</div>
+            <span class="settings-arrow">›</span>
+            <div class="settings-chip">Accesibilidad</div>
+          </div>
+          <div class="toggle-row">
+            <div class="toggle-label">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <div style="width:28px;height:28px;background:linear-gradient(135deg,#1a2a1a,#0a0f0a);border:1px solid rgba(212,255,51,0.2);border-radius:7px;display:flex;align-items:center;justify-content:center;">
+                  <img src="logo-vento.png" style="height:18px;mix-blend-mode:screen;" alt="Vento"/>
+                </div>
+                <span>Vento</span>
+              </div>
+            </div>
+            <div class="toggle-switch"><div class="toggle-knob"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="tip-box" style="margin-top:12px;">
+        <div class="tip-box-icon">ℹ️</div>
+        <div class="tip-box-text">Este permiso es el mismo que usan apps conocidas como Alfred, Raycast o TextExpander. Sin él, Vento no puede escribir en otras apps.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── PASO 4 ─── -->
+  <div class="step-block">
+    <div class="step-num-wrap" style="background:rgba(212,255,51,0.2);border-color:var(--lime);">✓</div>
+    <div class="step-content">
+      <div class="step-title-text">¡Listo! Inicia sesión y empieza a dictar</div>
+      <p class="step-desc-text">
+        Abre Vento, entra con tu cuenta de Google y ya puedes dictar. Mantén pulsado <strong>Option + Command</strong> en cualquier app y habla. El texto aparecerá corregido automáticamente en menos de 2 segundos.
+      </p>
+      <div class="step-visual">
+        <div class="step-visual-body" style="padding:20px 24px;">
+          <div style="font-size:0.78rem;color:var(--muted);margin-bottom:12px;">Atajo de dictado (personalizable):</div>
+          <div class="atajo-demo">
+            <div class="key-cap">⌥ option</div>
+            <span class="key-plus">+</span>
+            <div class="key-cap">⌘ command</div>
+            <span style="margin-left:12px;font-size:0.82rem;color:var(--muted);">mantén pulsado y habla</span>
+          </div>
+          <div class="tip-box" style="margin-top:16px;">
+            <div class="tip-box-icon">🎙️</div>
+            <div class="tip-box-text">
+              Puedes cambiar el atajo desde <strong>Ajustes → Atajo de teclado</strong> dentro de Vento si prefieres otra combinación.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- CTA final -->
+<div class="cta-final">
+  <div class="cta-card">
+    <div style="font-size:2rem;margin-bottom:16px;">🚀</div>
+    <h2>¿Todo listo?<br/>Descarga Vento ahora</h2>
+    <p>Gratis para empezar. Sin tarjeta de crédito.</p>
+    <a href="#" class="btn-download">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      Descargar Vento gratis
+    </a>
+    <p style="font-size:0.75rem;color:rgba(240,240,240,0.2);margin-top:16px;margin-bottom:0;">Apple Silicon + Intel · macOS 12+</p>
+  </div>
+</div>
+
+</body>
+</html>
