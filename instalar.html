@@ -317,41 +317,101 @@
   <div class="step-block">
     <div class="step-num-wrap">2</div>
     <div class="step-content">
-      <div class="step-title-text">macOS te avisará — es normal, pulsa "Abrir igualmente"</div>
+      <div class="step-title-text">macOS te bloqueará la app — aquí está la solución exacta</div>
       <p class="step-desc-text">
-        La primera vez que abras Vento, macOS muestra una advertencia porque la app no viene de la App Store. <strong>Esto es normal</strong> en apps de desarrolladores independientes. Sigue estos pasos:
+        Cuando intentes abrir Vento por primera vez, macOS mostrará un aviso de seguridad porque la app <strong>no viene de la App Store</strong>. Es completamente normal en apps de desarrolladores independientes (como Alfred, Raycast o Notion). Sigue estos pasos al pie de la letra:
       </p>
+
+      <!-- Aviso importante -->
+      <div style="background:rgba(255,200,50,0.06);border:1px solid rgba(255,200,50,0.2);border-radius:12px;padding:14px 18px;margin-bottom:20px;display:flex;gap:12px;align-items:flex-start;">
+        <span style="font-size:1.1rem;flex-shrink:0;">⚠️</span>
+        <div style="font-size:0.83rem;color:rgba(240,240,240,0.75);line-height:1.65;">
+          macOS <strong style="color:#fff;">no dejará</strong> que abras Vento haciendo doble clic la primera vez. Este paso es obligatorio. Solo hay que hacerlo <strong style="color:#fff;">una única vez</strong>.
+        </div>
+      </div>
+
+      <!-- Método rápido: clic derecho -->
+      <div style="margin-bottom:24px;">
+        <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--lime);margin-bottom:12px;">Método rápido (recomendado)</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <div style="width:22px;height:22px;border-radius:50%;background:rgba(212,255,51,0.12);border:1px solid rgba(212,255,51,0.3);color:var(--lime);font-size:0.7rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">1</div>
+            <div style="font-size:0.85rem;color:rgba(255,255,255,0.78);line-height:1.5;">Abre el <strong style="color:#fff;">Finder</strong> y ve a <strong style="color:#fff;">Aplicaciones</strong></div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <div style="width:22px;height:22px;border-radius:50%;background:rgba(212,255,51,0.12);border:1px solid rgba(212,255,51,0.3);color:var(--lime);font-size:0.7rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">2</div>
+            <div style="font-size:0.85rem;color:rgba(255,255,255,0.78);line-height:1.5;">Haz <strong style="color:#fff;">clic derecho</strong> sobre el icono de Vento (o <strong style="color:#fff;">Control + clic</strong>)</div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <div style="width:22px;height:22px;border-radius:50%;background:rgba(212,255,51,0.12);border:1px solid rgba(212,255,51,0.3);color:var(--lime);font-size:0.7rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">3</div>
+            <div style="font-size:0.85rem;color:rgba(255,255,255,0.78);line-height:1.5;">En el menú que aparece, haz clic en <strong style="color:#fff;">"Abrir"</strong></div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <div style="width:22px;height:22px;border-radius:50%;background:rgba(212,255,51,0.12);border:1px solid rgba(212,255,51,0.3);color:var(--lime);font-size:0.7rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">4</div>
+            <div style="font-size:0.85rem;color:rgba(255,255,255,0.78);line-height:1.5;">Aparece un nuevo aviso con el botón <strong style="color:#fff;">"Abrir"</strong> — pulsa ese botón</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Separador "o si no funciona" -->
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+        <div style="flex:1;height:1px;background:var(--border);"></div>
+        <span style="font-size:0.72rem;color:var(--muted);">si el método rápido no aparece</span>
+        <div style="flex:1;height:1px;background:var(--border);"></div>
+      </div>
+
+      <!-- Método alternativo: Ajustes del Sistema -->
+      <div style="margin-bottom:20px;">
+        <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:12px;">Método alternativo — vía Ajustes del Sistema</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <div style="width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.4);font-size:0.7rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">1</div>
+            <div style="font-size:0.85rem;color:rgba(255,255,255,0.6);line-height:1.5;">Intenta abrir Vento haciendo doble clic → macOS muestra el aviso. Pulsa <strong style="color:rgba(255,255,255,0.85);">"OK"</strong> para cerrarlo</div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <div style="width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.4);font-size:0.7rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">2</div>
+            <div style="font-size:0.85rem;color:rgba(255,255,255,0.6);line-height:1.5;">Ve a <strong style="color:rgba(255,255,255,0.85);">🍎 menú Apple → Ajustes del Sistema</strong></div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <div style="width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.4);font-size:0.7rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">3</div>
+            <div style="font-size:0.85rem;color:rgba(255,255,255,0.6);line-height:1.5;">En la barra lateral, haz clic en <strong style="color:rgba(255,255,255,0.85);">"Privacidad y Seguridad"</strong></div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <div style="width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.4);font-size:0.7rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">4</div>
+            <div style="font-size:0.85rem;color:rgba(255,255,255,0.6);line-height:1.5;"><strong style="color:rgba(255,255,255,0.85);">Baja con el scroll</strong> hasta ver el mensaje: <em style="color:rgba(255,255,255,0.75);">"Se ha bloqueado el uso de 'Vento'..."</em></div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <div style="width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.4);font-size:0.7rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">5</div>
+            <div style="font-size:0.85rem;color:rgba(255,255,255,0.6);line-height:1.5;">Haz clic en <strong style="color:rgba(255,255,255,0.85);">"Abrir igualmente"</strong> → introduce tu contraseña o usa Touch ID → haz clic en <strong style="color:rgba(255,255,255,0.85);">"Abrir"</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visual del diálogo de macOS -->
       <div class="step-visual">
+        <div class="step-visual-bar">
+          <span class="sv-dot sv-red"></span><span class="sv-dot sv-yellow"></span><span class="sv-dot sv-green"></span>
+          <span class="sv-title">Aviso que verás al intentar abrir Vento</span>
+        </div>
         <div class="step-visual-body" style="padding:24px;">
           <div class="macos-alert">
             <div class="alert-icon">🚫</div>
             <div>
               <div class="alert-title">"Vento" no se puede abrir porque es de un desarrollador no identificado.</div>
-              <div class="alert-text">macOS no puede verificar que esta app no contiene software malicioso.</div>
+              <div class="alert-text">macOS no puede verificar que esta app no contiene software malicioso. Si deseas abrirla, ve a Ajustes del Sistema → Privacidad y Seguridad.</div>
               <div class="alert-btns">
                 <div class="alert-btn alert-btn-cancel">Cancelar</div>
-                <div class="alert-btn alert-btn-ok">Listo</div>
+                <div class="alert-btn alert-btn-ok" style="background:rgba(255,255,255,0.18);">OK</div>
               </div>
             </div>
           </div>
-          <div class="tip-box" style="margin-top:20px; max-width:480px;">
-            <div class="tip-box-icon">💡</div>
-            <div class="tip-box-text">
-              Cuando aparezca este mensaje, ve a <strong>Ajustes del sistema → Privacidad y Seguridad</strong>. Baja hasta ver <strong>"Vento fue bloqueada..."</strong> y pulsa <strong>"Abrir igualmente"</strong>. Solo tendrás que hacerlo una vez.
-            </div>
+          <div style="margin-top:16px;font-size:0.75rem;color:var(--muted);display:flex;align-items:center;gap:6px;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Pulsa <strong style="color:rgba(255,255,255,0.7);margin:0 3px;">"OK"</strong> y luego sigue los pasos de arriba
           </div>
         </div>
       </div>
-      <div style="margin-top:14px;">
-        <div style="font-size:0.78rem;color:var(--muted);margin-bottom:10px;">Ruta en Ajustes:</div>
-        <div class="settings-path">
-          <div class="settings-chip">⚙️ Ajustes del sistema</div>
-          <span class="settings-arrow">›</span>
-          <div class="settings-chip">🔒 Privacidad y Seguridad</div>
-          <span class="settings-arrow">›</span>
-          <div class="settings-chip" style="color:var(--lime);border-color:rgba(212,255,51,0.2);">"Abrir igualmente"</div>
-        </div>
-      </div>
+
     </div>
   </div>
 
@@ -428,7 +488,7 @@
     <div style="font-size:2rem;margin-bottom:16px;">🚀</div>
     <h2>¿Todo listo?<br/>Descarga Vento ahora</h2>
     <p>Gratis para empezar. Sin tarjeta de crédito.</p>
-    <a href="#" class="btn-download">
+    <a href="https://github.com/Uricurti/landing_vento/releases/download/v1.0.0/Vento-1.0.0.dmg" download="Vento-1.0.0.dmg" class="btn-download">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
       Descargar Vento gratis
     </a>
