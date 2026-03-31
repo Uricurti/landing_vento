@@ -1199,6 +1199,81 @@
       .comparison-wpm { font-size: 3rem; }
       .pricing-card { padding: 32px 24px; }
     }
+
+    /* ─── SOCIAL PROOF BAR ───────────────────────────────── */
+    #social-proof-bar {
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg2);
+    }
+    .spb-inner {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0; flex-wrap: wrap;
+    }
+    .spb-stat {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 4px; padding: 12px 40px;
+    }
+    .spb-num {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.8rem; font-weight: 800;
+      color: var(--lime); letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .spb-label {
+      font-size: 0.78rem; color: var(--muted);
+      text-align: center; white-space: nowrap;
+    }
+    .spb-divider {
+      width: 1px; height: 40px;
+      background: var(--border);
+    }
+    @media (max-width: 600px) {
+      .spb-divider { display: none; }
+      .spb-stat { padding: 10px 20px; }
+      .spb-num { font-size: 1.5rem; }
+    }
+
+    /* ─── USE CASES ──────────────────────────────────────── */
+    .usecases-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px; margin-top: 64px;
+    }
+    .usecase-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .usecase-card:hover {
+      border-color: rgba(212,255,51,0.2);
+      transform: translateY(-3px);
+    }
+    .uc-icon {
+      font-size: 2rem; margin-bottom: 16px;
+    }
+    .uc-title {
+      font-size: 1.05rem; font-weight: 700;
+      margin-bottom: 10px; letter-spacing: -0.01em;
+    }
+    .uc-desc {
+      font-size: 0.9rem; color: var(--muted);
+      line-height: 1.6; margin-bottom: 16px;
+    }
+    .uc-example {
+      font-size: 0.82rem; color: var(--lime);
+      font-style: italic;
+      padding: 10px 14px;
+      background: var(--lime-dim);
+      border-left: 2px solid var(--lime);
+      border-radius: 0 8px 8px 0;
+    }
+    @media (max-width: 768px) {
+      .usecases-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -1256,6 +1331,13 @@
             <div class="card-pill-item"><span class="card-pill-dot"></span>Acentos, comas y puntuación perfectos</div>
             <div class="card-pill-item"><span class="card-pill-dot"></span>Funciona en cualquier app de Mac</div>
           </div>
+          <div style="margin-top:28px;display:flex;flex-direction:column;gap:10px;">
+            <a href="https://github.com/Uricurti/landing_vento/releases/download/v1.0.17/Vento-1.0.17-universal.dmg" download="Vento-1.0.17-universal.dmg" class="btn-primary" style="display:inline-flex;width:fit-content;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+              Descargar gratis para Mac
+            </a>
+            <span style="font-size:0.75rem;color:rgba(255,255,255,0.25);">macOS 12+ · Universal (Intel + Apple Silicon) · Gratis para empezar</span>
+          </div>
         </div>
 
         <!-- Centro: mockup -->
@@ -1298,6 +1380,33 @@
         <div class="col-right">
           <h2 class="brand-huge">Vento</h2>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ SOCIAL PROOF BAR ═══════════════════ -->
+<section id="social-proof-bar">
+  <div class="container">
+    <div class="spb-inner">
+      <div class="spb-stat">
+        <span class="spb-num">5×</span>
+        <span class="spb-label">más rápido que escribir</span>
+      </div>
+      <div class="spb-divider"></div>
+      <div class="spb-stat">
+        <span class="spb-num">99%</span>
+        <span class="spb-label">precisión con IA</span>
+      </div>
+      <div class="spb-divider"></div>
+      <div class="spb-stat">
+        <span class="spb-num">100+</span>
+        <span class="spb-label">idiomas soportados</span>
+      </div>
+      <div class="spb-divider"></div>
+      <div class="spb-stat">
+        <span class="spb-num">&lt;2s</span>
+        <span class="spb-label">de voz a texto</span>
       </div>
     </div>
   </div>
@@ -1413,6 +1522,43 @@
         <div class="feature-icon">🔒</div>
         <h3 class="feature-title">Tu voz no se almacena nunca</h3>
         <p class="feature-desc">El audio se procesa en tiempo real y se descarta inmediatamente. Jamás se guarda en ningún servidor. Diseñado para respetar tu privacidad desde el primer día.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ USE CASES ═══════════════════ -->
+<section id="usecases" class="section">
+  <div class="container">
+    <div style="text-align:center" class="reveal">
+      <div class="section-label">Para quién es</div>
+      <h2 class="section-title">Dicta mejor,<br /><span class="lime">haga lo que hagas.</span></h2>
+      <p class="section-sub" style="margin:0 auto">Vento se adapta a tu forma de trabajar, no al revés.</p>
+    </div>
+    <div class="usecases-grid">
+      <div class="usecase-card reveal reveal-delay-1">
+        <div class="uc-icon">✍️</div>
+        <h3 class="uc-title">Redactores y creadores</h3>
+        <p class="uc-desc">Dicta borradores, posts o guiones mientras caminas. Deja que la IA limpie el texto. Escribe el doble en la mitad del tiempo.</p>
+        <div class="uc-example">"Dicto el borrador en 3 minutos. Antes tardaba 20."</div>
+      </div>
+      <div class="usecase-card reveal reveal-delay-2">
+        <div class="uc-icon">📧</div>
+        <h3 class="uc-title">Emprendedores y comerciales</h3>
+        <p class="uc-desc">Responde emails, WhatsApp y Slack sin tocar el teclado. Vento pone los acentos, la puntuación y el tono correcto.</p>
+        <div class="uc-example">"Respondo 50 emails al día. Vento me ahorra más de 1 hora."</div>
+      </div>
+      <div class="usecase-card reveal reveal-delay-3">
+        <div class="uc-icon">💻</div>
+        <h3 class="uc-title">Developers y técnicos</h3>
+        <p class="uc-desc">Documenta código, escribe commits y dicta comentarios. Vento reconoce términos técnicos, nombres de librerías y comandos sin errores.</p>
+        <div class="uc-example">"Documento funciones en VS Code hablando. Rápido y preciso."</div>
+      </div>
+      <div class="usecase-card reveal reveal-delay-4">
+        <div class="uc-icon">📊</div>
+        <h3 class="uc-title">Consultores y managers</h3>
+        <p class="uc-desc">Redacta informes, actas de reunión y presentaciones dictando. Sin fatiga, sin errores tipográficos, sin interrumpir tu flujo de pensamiento.</p>
+        <div class="uc-example">"Dicto las notas de reunión al momento. Listas en segundos."</div>
       </div>
     </div>
   </div>
@@ -1562,10 +1708,10 @@
       <!-- ── Pro ── -->
       <div class="pricing-card pro reveal reveal-delay-2">
         <div class="pricing-card-sheen"></div>
-        <div class="pro-badge">Más popular</div>
+        <div class="pro-badge">Oferta de lanzamiento</div>
         <div class="plan-name">Pro</div>
-        <div class="plan-price" style="color:var(--lime)">€9</div>
-        <div class="plan-price-note">/ mes · próximamente</div>
+        <div class="plan-price" style="color:var(--lime)">€49</div>
+        <div class="plan-price-note">/ año · <span style="text-decoration:line-through;opacity:0.5;">108€</span> · Early adopter</div>
         <div class="plan-divider"></div>
         <ul class="plan-features">
           <li class="plan-feature">
@@ -1709,7 +1855,7 @@
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-a">
-          <p class="faq-a-inner">El plan gratuito incluye 2.000 palabras por semana, suficiente para un uso moderado. Si necesitas más, el plan Pro es ilimitado. Las semanas se reinician cada lunes. Puedes ver cuánto llevas en el Dashboard de la app.</p>
+          <p class="faq-a-inner">El plan gratuito incluye 2.000 palabras por semana, suficiente para un uso moderado. Si necesitas más, el plan Pro es ilimitado. El contador se reinicia cada 7 días desde tu fecha de registro, no cada lunes. Puedes ver cuánto llevas en el Dashboard de la app.</p>
         </div>
       </div>
 
@@ -1759,7 +1905,7 @@
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-a">
-          <p class="faq-a-inner">Estamos en beta abierta. El plan Pro estará disponible próximamente a €9/mes. Si te unes ahora al plan gratuito, recibirás acceso prioritario y precio especial de early adopter cuando llegue el Pro.</p>
+          <p class="faq-a-inner">Estamos en beta abierta. El plan Pro tiene un precio especial de lanzamiento de <strong>49€/año</strong> (precio normal 108€/año). Si te unes ahora al plan gratuito, recibirás acceso prioritario y precio especial de early adopter.</p>
         </div>
       </div>
 
